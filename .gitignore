@@ -33,3 +33,10 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+
+# *.lock*
+# *lock.*
+
+
+eas.json
+.vscode
