@@ -17,8 +17,6 @@ const AppUI = props => {
         container: {
             flex: 1,
             color: minor,
-            padding: 10,
-            paddingTop: 40,
         }
     };
     const styles = StyleSheet.create(styleData);
