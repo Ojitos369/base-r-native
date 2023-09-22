@@ -51,7 +51,10 @@ const Main = props => {
 
             <Pressable
                 style={style.button}
-                onPress={() => f.upgradeLvl0('theme', theme === 'dark' ? 'light' : 'dark')}
+                onPress={() => {
+                    f.upgradeLvl0('theme', theme === 'dark' ? 'light' : 'dark');
+                    f.upgradeLvl2('modals', 'exampleBase', 'example', true);
+                }}
             >
                 <Text
                     style={style.text}
@@ -70,7 +73,6 @@ const Main = props => {
                     }
                 </Text>
             </Pressable>
-
         </View>
     );
 }
