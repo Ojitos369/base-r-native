@@ -46,18 +46,7 @@ const Main = props => {
             <Text
                 style={{...style.text, fontSize: 20}}
                 >
-                Thema Actual: {(theme || 'dark') == 'dark' ? 
-                    <SvgXml
-                        xml={moonIcon()}
-                        width="20"
-                        height="20"
-                        /> : 
-                    <SvgXml
-                        xml={sunIcon()}
-                        width="20"
-                        height="20"
-                        />
-                }
+                Thema Actual: {theme}
             </Text>
 
             <Pressable
@@ -67,7 +56,18 @@ const Main = props => {
                 <Text
                     style={style.text}
                     >
-                    Cambiar Tema
+                    Cambiar Tema {theme === 'dark' ? 
+                        <SvgXml
+                            xml={moonIcon()}
+                            width="20"
+                            height="20"
+                            /> : 
+                        <SvgXml
+                            xml={sunIcon()}
+                            width="20"
+                            height="20"
+                            />
+                    }
                 </Text>
             </Pressable>
 
