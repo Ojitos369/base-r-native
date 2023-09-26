@@ -1,12 +1,14 @@
 import { useContext, useEffect } from 'react';
 import { MyContext } from './MyContext';
 import { AllContext } from './MyContext';
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
 
 import { Main } from '../Components/Main';
-import { BaseModal } from '../Components/Modals/BaseModal';
+import { Other } from '../Components/Other';
+
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+
+const Stack = createNativeStackNavigator();
 
 const AppUI = props => {
     const { s, f } = useContext(AllContext);
@@ -32,21 +34,25 @@ const AppUI = props => {
 
     return (
         <>
-            <StatusBar 
-                style={theme === 'dark' ? 'light' : 'dark'}
-            />
-            <LinearGradient
-                colors={[major, minor]}
-                locations={[0.6, 1]}
-                start={[0, 0]}
-                end={[1, 1]}
-                style={styles.container}
-            >
-                <View style={styles.container}>
-                    <Main />
-                </View>
-            </LinearGradient>
-            {!!s.modals?.exampleBase?.example && <BaseModal />}
+            <View style={styles.container}>
+                <Stack.Navigator>
+                    {/* without header */}
+                    <Stack.Screen 
+                        name="Main"
+                        component={Main}
+                        options={{
+                            headerShown: false
+                        }}
+                         />
+                    <Stack.Screen 
+                        name="Other"
+                        component={Other}
+                        options={{
+                            headerShown: false
+                        }}
+                         />
+                </Stack.Navigator>
+            </View>
         </>
     );
 }

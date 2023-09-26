@@ -1,15 +1,14 @@
 import { useContext } from 'react';
 // styles, p, button, span
-import { SvgXml } from 'react-native-svg';
 import { StatusBar } from 'expo-status-bar';
 import { LinearGradient } from 'expo-linear-gradient';
-import { StyleSheet, Text, Pressable, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Pressable } from 'react-native';
 
 import { AllContext } from '../../App/MyContext';
 import { sun as sunIcon } from '../../App/Icons';
 import { moon as moonIcon } from '../../App/Icons';
 
-const Main = props => {
+const Other = props => {
     const { s, f } = useContext(AllContext);
     const { navigation } = props;
 
@@ -27,7 +26,6 @@ const Main = props => {
             bottom: 0,
             left: 0,
             padding: 20,
-            backgroundColor: "transparent",
         },
         text: {
             color: theme === 'dark' ? '#fff' : '#000',
@@ -69,43 +67,23 @@ const Main = props => {
                         >
                         Thema Actual: {theme}
                     </Text>
-
-                    <Pressable
-                        style={style.button}
-                        onPress={() => {
-                            f.upgradeLvl0('theme', theme === 'dark' ? 'light' : 'dark');
-                            f.upgradeLvl2('modals', 'exampleBase', 'example', true);
-                        }}
-                    >
-                        <Text
-                            style={style.text}
-                            >
-                            Cambiar Tema {theme === 'dark' ? 
-                                <SvgXml
-                                    xml={moonIcon()}
-                                    width="20"
-                                    height="20"
-                                    /> : 
-                                <SvgXml
-                                    xml={sunIcon()}
-                                    width="20"
-                                    height="20"
-                                    />
-                            }
-                        </Text>
-                    </Pressable>
+                    <Text
+                        style={style.text}
+                        >
+                            Aqui no hacemos eso
+                    </Text>
 
                     <Pressable
                         style={style.button}
                         title="Sin Effecto"
                         onPress={() =>
-                            navigation.navigate('Other')
+                            navigation.navigate('Main')
                         }
                         >
                         <Text
                             style={style.text}
                             >
-                            Sin Effecto
+                            Quiero ir a mi casa
                         </Text>
                     </Pressable>
                 </View>
@@ -114,4 +92,4 @@ const Main = props => {
     );
 }
 
-export { Main }
+export { Other }
