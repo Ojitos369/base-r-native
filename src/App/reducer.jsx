@@ -1,7 +1,9 @@
 import axios from "axios";
 
-let link = '';
-link = 'http://localhost:8000/'
+const link = 'http://192.168.83.133:8369/'
+const miAxios = axios.create({
+    baseURL: link,
+});
 
 const actionTypes = {
     levels: {
@@ -168,6 +170,24 @@ class functions {
     constructor(d, s) {
         this.d = d;
         this.s = s;
+    }
+
+    test = {
+        getAdd: () => {
+            const endPoint = 'api/test/';
+            // console.log("realiazndo peticion a:", link + endPoint);
+            miAxios.get(endPoint)
+            .then((response) => {
+                const message = response.data.message;
+                this.upgradeLvl1('test', 'message', message);
+            })
+            .catch((error) => {
+                console.log("error de peticion", error);
+                const message = error.response.data.message;
+                this.upgradeLvl1('test', 'message', message);
+            });           
+
+        }
     }
     
     // ------------------------------------------------------------------ //

@@ -64,6 +64,12 @@ const Main = props => {
                 <View
                     style={style.div}
                     >
+                    {s.test?.message && 
+                    <Text
+                        style={{...style.text, fontSize: 20}}
+                        >
+                        Message: {s.test.message}
+                    </Text>}
                     <Text
                         style={{...style.text, fontSize: 20}}
                         >
@@ -73,6 +79,7 @@ const Main = props => {
                     <Pressable
                         style={style.button}
                         onPress={() => {
+                            f.test.getAdd();
                             f.upgradeLvl0('theme', theme === 'dark' ? 'light' : 'dark');
                             f.upgradeLvl2('modals', 'exampleBase', 'example', true);
                         }}
