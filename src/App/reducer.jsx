@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const link = 'http://192.168.83.133:8369/'
+// const link = 'https://rn-test.ojitos369.com/'
 const miAxios = axios.create({
     baseURL: link,
 });
@@ -172,9 +173,9 @@ class functions {
         this.s = s;
     }
 
-    test = {
-        getAdd: () => {
-            const endPoint = 'api/test/';
+    users = {
+        register: () => {
+            const endPoint = 'api/users/create_user/';
             // console.log("realiazndo peticion a:", link + endPoint);
             miAxios.get(endPoint)
             .then((response) => {

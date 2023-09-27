@@ -5,6 +5,8 @@ import { StyleSheet, View } from 'react-native';
 
 import { Main } from '../Components/Main';
 import { Other } from '../Components/Other';
+import { Login } from '../Components/Login';
+import { Register } from '../Components/Register';
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
@@ -12,6 +14,8 @@ const Stack = createNativeStackNavigator();
 
 const AppUI = props => {
     const { s, f } = useContext(AllContext);
+
+    const logged = s.login?.logged;
 
     const theme = s?.theme || 'dark';
     const major = s.colors?.major || '#000';
@@ -32,21 +36,22 @@ const AppUI = props => {
         f.upgradeLvl1('colors', 'minor', minor);
     }, [s.theme]);
 
-    return (
-        <>
+    if (!logged) {
+        return (
+            <>
             <View style={styles.container}>
                 <Stack.Navigator>
-                    {/* without header */}
+                    {/* First Login */}
                     <Stack.Screen 
-                        name="Main"
-                        component={Main}
+                        name="Login"
+                        component={Login}
                         options={{
                             headerShown: false
                         }}
                          />
                     <Stack.Screen 
-                        name="Other"
-                        component={Other}
+                        name="Register"
+                        component={Register}
                         options={{
                             headerShown: false
                         }}
@@ -54,7 +59,32 @@ const AppUI = props => {
                 </Stack.Navigator>
             </View>
         </>
-    );
+        )
+    } else {
+        return (
+            <>
+                <View style={styles.container}>
+                    <Stack.Navigator>
+                        {/* without header */}
+                        <Stack.Screen 
+                            name="Main"
+                            component={Main}
+                            options={{
+                                headerShown: false
+                            }}
+                            />
+                        <Stack.Screen 
+                            name="Other"
+                            component={Other}
+                            options={{
+                                headerShown: false
+                            }}
+                            />
+                    </Stack.Navigator>
+                </View>
+            </>
+        );
+    }
 }
 
 const App = props => {
