@@ -30,26 +30,26 @@ const Login = props => {
         },
         button: {
             height: 40,
-            width: 200,
+            width: '80%',
             backgroundColor: "#009",
             justifyContent: "center",
             alignItems: "center",
             borderRadius: 100,
-            marginTop: 20,
+            marginTop: 60,
         },
         div: {
             width: '100%',
             flex: 1,
             justifyContent: "flex-start",
             alignItems: "center",
-            paddingTop: "50%",
+            paddingTop: "30%",
         },
         inputContainer: {
             width: '80%',
             flexDirection: 'column',
             justifyContent: "center",
             alignItems: "center",
-            marginTop: 20,
+            marginTop: 40,
         },
         inputLabel: {
             color: minor,
@@ -78,7 +78,7 @@ const Login = props => {
                 />
             <LinearGradient
                     colors={[major, minor]}
-                    locations={[0.6, 1]}
+                    locations={[1, 1]}
                     start={[0, 0]}
                     end={[1, 1]}
                     style={style.container}
@@ -86,6 +86,15 @@ const Login = props => {
                 <View
                     style={{...style.div}}
                     >
+                    <View
+                        style={{...style.inputContainer}}
+                        >
+                        <Text
+                            style={{...style.text, fontSize: 40, fontWeight: 'bold', width: '100%', textAlign: 'center'}}
+                            >
+                            Login
+                        </Text>
+                    </View>
                     <View
                         style={{...style.inputContainer}}
                         >
@@ -130,6 +139,32 @@ const Login = props => {
                             Login
                         </Text>
                     </Pressable>
+
+                    <View
+                        style={{
+                            width: '80%',
+                            marginTop: 30,
+                            flexDirection: 'row',
+                            justifyContent: "flex-start",
+                        }}
+                        >
+                        <Pressable
+                            onPress={() => {
+                                navigation.navigate('Register');
+                            }}
+                            >
+                            <Text
+                                style={{
+                                    color: minor, 
+                                    fontSize: 20, 
+                                    fontWeight: 'bold', 
+                                    width: '100%',
+                                }}
+                                >
+                                Register
+                            </Text>
+                        </Pressable>
+                    </View>
                 </View>
             </LinearGradient>
         </>

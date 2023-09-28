@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const link = 'http://192.168.83.133:8369/'
-// const link = 'https://rn-test.ojitos369.com/'
+// const link = 'http://192.168.83.133:8369/'
+const link = 'https://rn-test.ojitos369.com/'
 const miAxios = axios.create({
     baseURL: link,
 });
@@ -192,23 +192,36 @@ class functions {
             });
 
         },
-    }
-    users = {
-        register: () => {
+        register: props => {
+            this.upgradeLvl2('loaders', 'login', 'register', true);
             const endPoint = 'api/users/create_user/';
+            const form = this.s.forms?.register || {};
             // console.log("realiazndo peticion a:", link + endPoint);
-            miAxios.get(endPoint)
+            miAxios.post(endPoint, form)
             .then((response) => {
                 const message = response.data.message;
-                this.upgradeLvl1('test', 'message', message);
+                this.upgradeLvl1('forms', 'register', null);
+                const mData = {
+                    message,
+                    type: 'success',
+                }
+                this.upgradeLvl2('forms', 'register', 'message', mData);
             })
             .catch((error) => {
                 console.log("error de peticion", error);
                 const message = error.response.data.message;
-                this.upgradeLvl1('test', 'message', message);
-            });           
-
-        }
+                const mData = {
+                    message,
+                    type: 'error',
+                }
+                this.upgradeLvl2('forms', 'register', 'message', mData);
+            }).finally(() => {
+                this.upgradeLvl2('loaders', 'login', 'register', false);
+            });
+        },
+    }
+    users = {
+        
     }
     
     // ------------------------------------------------------------------ //

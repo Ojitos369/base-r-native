@@ -39,7 +39,7 @@ const AppUI = props => {
     useEffect(() => {
         const token = s.login?.token;
         if (token) {
-            let tokenPetition = toke;
+            let tokenPetition = token;
             // encriptar tokenPetition
             f.upgradeLvl1('login', 'tokenPetition', tokenPetition);
         } else {

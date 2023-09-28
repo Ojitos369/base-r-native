@@ -79,7 +79,6 @@ const Main = props => {
                     <Pressable
                         style={style.button}
                         onPress={() => {
-                            f.test.getAdd();
                             f.upgradeLvl0('theme', theme === 'dark' ? 'light' : 'dark');
                             f.upgradeLvl2('modals', 'exampleBase', 'example', true);
                         }}
