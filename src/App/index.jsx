@@ -36,6 +36,17 @@ const AppUI = props => {
         f.upgradeLvl1('colors', 'minor', minor);
     }, [s.theme]);
 
+    useEffect(() => {
+        const token = s.login?.token;
+        if (token) {
+            let tokenPetition = toke;
+            // encriptar tokenPetition
+            f.upgradeLvl1('login', 'tokenPetition', tokenPetition);
+        } else {
+            f.upgradeLvl1('login', 'tokenPetition', null);
+        }
+    }, [s.login?.token]);
+
     if (!logged) {
         return (
             <>

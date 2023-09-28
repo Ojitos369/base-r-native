@@ -173,6 +173,26 @@ class functions {
         this.s = s;
     }
 
+    login = {
+        login: () => {
+            this.upgradeLvl2('loaders', 'login', 'login', true);
+            const endPoint = 'api/login/login/';
+            const form = this.s.forms?.login || {};
+
+            miAxios.post(endPoint, form)
+            .then((response) => {
+                const {message, token, user} = response.data;
+                this.upgradeLvl1('login', 'logged', true);
+                this.upgradeLvl1('login', 'token', token);
+                this.upgradeLvl1('login', 'user', user);
+            }).catch((error) => {
+                console.log('error', error);
+            }).finally(() => {
+                this.upgradeLvl2('loaders', 'login', 'login', false);
+            });
+
+        },
+    }
     users = {
         register: () => {
             const endPoint = 'api/users/create_user/';

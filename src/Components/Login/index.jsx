@@ -99,6 +99,8 @@ const Login = props => {
                             style={style.inputField}
                             placeholder='Username'
                             placeholderTextColor={minor}
+                            value={s.forms?.login?.username || ''}
+                            onChangeText={text => f.upgradeLvl2('forms', 'login', 'username', text )}
                             />
                     </View>
                     <View
@@ -114,9 +116,20 @@ const Login = props => {
                             placeholder='Password'
                             placeholderTextColor={minor}
                             secureTextEntry={true}
+                            value={s.forms?.login?.password || ''}
+                            onChangeText={text => f.upgradeLvl2('forms', 'login', 'password', text )}
                             />
                     </View>
-
+                    <Pressable
+                        style={style.button}
+                        onPress={() => f.login.login()}
+                        >
+                        <Text
+                            style={style.text}
+                            >
+                            Login
+                        </Text>
+                    </Pressable>
                 </View>
             </LinearGradient>
         </>
